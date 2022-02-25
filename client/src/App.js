@@ -1,24 +1,44 @@
 import React from "react";
-import logo from "./logo.svg";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";// import NotFound from '../pages/NotFound'
+// <Route path="*" element={<NotFound/>}/>
 import "./App.css";
+import EmailAddressComponent from "./EmailAddressComponent/";
+import NavBar from "./NavBar/";
 
-function App() {
-  const [data, setData] = React.useState(null);
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+const App = () => {
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
-  );
-}
+    <BrowserRouter>
+      <NavBar/>
+      <Routes>
+        <Route exact path="/" element={<EmailAddressComponent/>}/>
+        <Route path="/about" element={<About />} />
+    </Routes>
+  </BrowserRouter>
+
+  )
+  // return (
+  //   <Router>
+  //     <Link to="/">Dogs</Link>
+  //     <Routes>
+  //       <Route exact path="/" element={<EmailAddressComponent/>}/>
+  //     </Routes>
+  //   </Router>
+  // );
+
+};
 
 export default App;
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Home() {
+  return <h2>Home</h2>;
+}
