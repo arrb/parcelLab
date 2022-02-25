@@ -15,6 +15,25 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
+app.get("/getorder", (req, res) => {
+  var email = req.query
+  res.json([
+    { 
+      orderNumber: "ORD-123-2018",
+      currentStatus: "Order processed",
+      address: "some address st.",
+  
+    },
+    { 
+      orderNumber: "780XX004",
+      currentStatus: "Pick-up planned",
+      address: "some address st. 2",
+  
+    }
+  ])
+});
+
+
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));

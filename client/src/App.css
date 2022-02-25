@@ -1,4 +1,132 @@
-.App {
+.form-center.square-section {
+  display: block;
+  text-align: center;
+}
+
+.form-center .square-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+input[type="email"] {
+  font-family: "Avenir Next", "nunitoregular", Raleway;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 2px;
+  border: 1px solid #637381;
+  box-shadow: none;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+input[type="submit"] {
+  font-family: "Avenir Next", "nunitoregular", Raleway;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000c41;
+  text-transform: none;
+  line-height: 1.87;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  color: #002172;
+  border-width: 0px;
+  background-color: #c2f264;
+  padding-top: 10px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  margin-top: 10px;
+  margin-right: 40px;
+  box-shadow: 0px 16px 21px -12px rgb(26 32 37 / 30%);
+  text-shadow: 0px;
+}
+
+input[type="submit"]:hover {
+  font-family: "Avenir Next", "nunitoregular", Raleway;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f2f6fa;
+  cursor: pointer;
+  box-shadow: 0px 16px 21px -12px rgb(26 32 37 / 30%);
+  text-shadow: 0px;
+}
+
+/* NavBar */
+.top-navbar {
+  background-color: #02236f;
+  min-height: 60px;
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.top-navbar > li {
+  list-style: none;
+  margin-top: 1.5%;
+  margin-left: 2%;
+  font-size: 14px;
+}
+
+.headerlink-title > a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Order list component */
+
+.sub-square-section {
+  box-shadow: 0 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.order-category {
+  padding-bottom: 20px;
+}
+
+.left {
+  float: left;
+  width: 50%;
+}
+
+.right {
+  float: right;
+  width: 50%;
+}
+
+.order-title {
+  color: #727070;
+  font-size: 12px;
+}
+
+.order-subtitle {
+  font-weight: bold;
+}
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +163,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
