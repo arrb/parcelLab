@@ -8,6 +8,8 @@ import {
 import "./App.css";
 import EmailAddressComponent from "./EmailAddressComponent/";
 import NavBar from "./NavBar/";
+import OrderDetailsComponent from "./OrderDetailsComponent";
+import OrderListComponent from "./OrderListComponent";
 
 
 const App = () => {
@@ -17,28 +19,14 @@ const App = () => {
       <NavBar/>
       <Routes>
         <Route exact path="/" element={<EmailAddressComponent/>}/>
-        <Route path="/about" element={<About />} />
+        <Route path="/orderlist" element={<OrderListComponent />} />
+        <Route path="/orderdetails" element={<OrderDetailsComponent />} />
+
     </Routes>
   </BrowserRouter>
 
   )
-  // return (
-  //   <Router>
-  //     <Link to="/">Dogs</Link>
-  //     <Routes>
-  //       <Route exact path="/" element={<EmailAddressComponent/>}/>
-  //     </Routes>
-  //   </Router>
-  // );
 
 };
 
 export default App;
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
