@@ -6,14 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "build": "cd client && npm install && npm run build"
+    "startdb": "NODE_ENV=development node server/index.js",
+    "build": "cd client && npm install && npm run build",
+    "migrate": "knex migrate:latest --knexfile db/knexfile.js",
+    "seed": "knex seed:run --knexfile db/knexfile.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
+    "body-parser": "^1.19.2",
     "express": "^4.17.3",
-    "react-router-dom": "^6.2.1"
+    "fs": "^0.0.1-security",
+    "knex": "^1.0.3",
+    "nodemon": "^2.0.15",
+    "papaparse": "^5.3.1",
+    "react-router-dom": "^6.2.1",
+    "sqlite3": "^5.0.2",
+    "xhr2": "^0.2.1"
   },
   "engines": {
     "node": "16.14.0"

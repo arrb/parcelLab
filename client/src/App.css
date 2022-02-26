@@ -24,8 +24,8 @@ input {
   padding: 10px;
 }
 
-input[type="email"] {
-  font-family: "Avenir Next", "nunitoregular", Raleway;
+input[type='email'] {
+  font-family: 'Avenir Next', 'nunitoregular', Raleway;
   font-size: 14px;
   padding: 16px;
   border-radius: 2px;
@@ -35,8 +35,8 @@ input[type="email"] {
   margin: 10px 0px;
 }
 
-input[type="submit"] {
-  font-family: "Avenir Next", "nunitoregular", Raleway;
+input[type='submit'] {
+  font-family: 'Avenir Next', 'nunitoregular', Raleway;
   font-size: 16px;
   font-weight: bold;
   color: #000c41;
@@ -61,14 +61,20 @@ input[type="submit"] {
   text-shadow: 0px;
 }
 
-input[type="submit"]:hover {
-  font-family: "Avenir Next", "nunitoregular", Raleway;
+input[type='submit']:hover {
+  font-family: 'Avenir Next', 'nunitoregular', Raleway;
   font-size: 16px;
   font-weight: bold;
   background-color: #f2f6fa;
   cursor: pointer;
   box-shadow: 0px 16px 21px -12px rgb(26 32 37 / 30%);
   text-shadow: 0px;
+}
+
+.text-danger {
+  color: red;
+  font-size: 12px;
+  padding-bottom: 10px;
 }
 
 /* NavBar */
@@ -141,41 +147,32 @@ input[type="submit"]:hover {
 .order-subtitle {
   font-weight: bold;
 }
-/* .App {
-  text-align: center;
+
+/* Order Details */
+.order-image {
+  width: 20%;
+  margin-bottom: 23px;
+  margin-right: 22px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.product-name {
+  font-weight: bold;
+  font-size: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.article-no {
+  color: #727070;
+  font-size: 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.article-info {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.article-title {
+  color: #727070;
+  font-size: 12px;
+  margin-right: 22px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

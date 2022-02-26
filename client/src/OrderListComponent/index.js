@@ -1,32 +1,22 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from "react"
+import { useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const OrderListComponent = () => {
   const {state} = useLocation();
-  const { email } = state
-  const [orderList, setOrderList] = useState([]);
+  const { orderList, filteredArr } = state
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchDogs();
-  }, []);
-  
-  const fetchDogs = async () => {
-    try {
-      const result = await axios(
-        `/getorder`, {params: {email}}
-      );
-      setOrderList(result.data);
-    } catch (error) {
-      console.log("error")
-    }
-  };
+  // We need to just return duplicates 
+  // because we want a more detailed view for the next screen
+  const lookup = orderList.reduce((a, e) => {
+    a[e.orderNo] = ++a[e.orderNo] || 0;
+    return a;
+  }, {})
 
   const showDetails = (order) => {
-    console.log(order)
-    navigate("/orderdetails", { state: { order } });
+    const filteredElements = orderList.filter(e => lookup[e.orderNo])
+    navigate("/orderdetails", { state: { order: filteredElements } })
   }
 
   const renderOrder = (order, index) => {
@@ -34,15 +24,15 @@ const OrderListComponent = () => {
       <div onClick={() => showDetails(order)} className="order-category-div" key={index}> 
         <div className="order-category left">
           <div className="order-title">Order Number</div>
-          <div className="order-subtitle">{order.orderNumber}</div>
+          <div className="order-subtitle">{order.orderNo}</div>
         </div>
         <div className="order-category left">
           <div className="order-title">Delivery Address</div>
-          <div className="order-subtitle">{order.address}</div>
+          <div className="order-subtitle">{`${order.street} ${order.zip_code}, ${order.city}`}</div>
         </div>
         <div className="order-category right">
           <div className="order-title">Current Status</div>
-          <div className="order-subtitle">{order.currentStatus}</div>
+          <div className="order-subtitle">{order.status_text}</div>
         </div>
       </div>
     )
@@ -53,14 +43,14 @@ const OrderListComponent = () => {
       <div className="center"> 
         <h5>Your Orders</h5>
         {
-          orderList.map((order, index) => {
+          filteredArr.map((order, index) => {
             return renderOrder(order, index)
           })
         }
       </div>
     </div>
   )
-};
+}
 
-export default OrderListComponent;
+export default OrderListComponent
 

@@ -2,7 +2,11 @@
 
 const path = require('path');
 const express = require("express");
+const bodyParser = require('body-parser');
 
+const knexConfig = require('../db/knexfile');
+//initialize knex
+const knex = require('knex')(knexConfig[process.env.NODE_ENV])
 
 const PORT = process.env.PORT || 3001;
 
@@ -15,31 +19,21 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
-app.get("/getorder", (req, res) => {
-  // var email = req.query
-
-  res.json([
-    { 
-      orderNumber: "ORD-123-2018",
-      currentStatus: "Order processed",
-      address: "some address st.",
-  
-    },
-    { 
-      orderNumber: "780XX004",
-      currentStatus: "Pick-up planned",
-      address: "some address st. 2",
-  
-    },
-    { 
-      orderNumber: "ORD-123-2018",
-      currentStatus: "Order processed",
-      address: "some address st.",
-  
-    },
-  ])
+app.get('/getorders', (req, res) => {
+  const {email} = req.query
+  knex.raw(`SELECT tr.tracking_number, orderNo, articleNo, status_text, status_details, street, city, zip_code, destination_country_iso3, quantity, product_name, articleImageUrl, email FROM checkpoints ch
+  JOIN tracking tr
+  ON tr.tracking_number = ch.tracking_number
+  WHERE timestamp  IN (SELECT MAX(timestamp)  FROM checkpoints GROUP BY tracking_number)
+  AND email='${email}'`)
+  .then((orders) => {
+    return res.json(orders);
+  })
+  .catch((err) => {
+    console.error(err);
+    return res.json({success: false, message: 'An error occurred, please try again later.'});
+  })
 });
-
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
