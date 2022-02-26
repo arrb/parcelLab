@@ -1,13 +1,11 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React from "react"
+import { useLocation } from "react-router-dom"
 
 const OrderDetailsComponent = () => {
-  const {state} = useLocation();
+  const {state} = useLocation()
   const { order } = state
   const { orderNo, street, zip_code, city, status_text, tracking_number, status_details } = order[0]
 
-  console.log("details")
-  console.log(order )
   return (
     <div className="container">
       <div className="center"> 
@@ -47,14 +45,12 @@ const OrderDetailsComponent = () => {
                 </div>
               )})
             }
-            
           </div>
         </div>
-       
       </div>
     </div>
   )
-};
+}
 
-export default OrderDetailsComponent;
+export default OrderDetailsComponent
 

@@ -3,14 +3,13 @@ import {
   BrowserRouter,
   Routes,
   Route,
-} from "react-router-dom";
+} from "react-router-dom"
 import NotFound from './NotFound'
-import "./App.css";
-import EmailAddressComponent from "./EmailAddressComponent/";
-import NavBar from "./NavBar/";
-import OrderDetailsComponent from "./OrderDetailsComponent";
-import OrderListComponent from "./OrderListComponent";
-
+import EmailAddressComponent from "./EmailAddressComponent/"
+import NavBar from "./NavBar/"
+import OrderDetailsComponent from "./OrderDetailsComponent"
+import OrderListComponent from "./OrderListComponent"
+import "./App.css"
 
 const App = () => {
   return (
