@@ -16,7 +16,8 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/getorder", (req, res) => {
-  var email = req.query
+  // var email = req.query
+
   res.json([
     { 
       orderNumber: "ORD-123-2018",
@@ -29,7 +30,13 @@ app.get("/getorder", (req, res) => {
       currentStatus: "Pick-up planned",
       address: "some address st. 2",
   
-    }
+    },
+    { 
+      orderNumber: "ORD-123-2018",
+      currentStatus: "Order processed",
+      address: "some address st.",
+  
+    },
   ])
 });
 
