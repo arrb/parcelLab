@@ -60,7 +60,6 @@ const EmailAddressComponent = () => {
   }
 
   const clickSubmit = (e) => {
-    console.log("Click submit")
     e.preventDefault()
     const email = e.target.email.value
     // Only send request when the email address is valid
