@@ -7,15 +7,11 @@ const OrderListComponent = () => {
   const { orderList, filteredArr } = state
   const navigate = useNavigate();
 
-  // We need to just return duplicates 
-  // because we want a more detailed view for the next screen
-  const lookup = orderList.reduce((a, e) => {
-    a[e.orderNo] = ++a[e.orderNo] || 0;
-    return a;
-  }, {})
-
   const showDetails = (order) => {
-    const filteredElements = orderList.filter(e => lookup[e.orderNo])
+    // We need to just return duplicates 
+    // because we want a more detailed view for the next screen
+    const filteredElements = orderList.filter(e => e.orderNo === order.orderNo)
+    console.log(filteredElements)
     navigate("/orderdetails", { state: { order: filteredElements } })
   }
 

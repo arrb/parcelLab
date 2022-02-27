@@ -6,6 +6,33 @@ const OrderDetailsComponent = () => {
   const { order } = state
   const { orderNo, street, zip_code, city, status_text, tracking_number, status_details } = order[0]
 
+  const renderArticle = () => {
+    // Checking if there is articles information to show
+    // the articles section. 
+    if(order.some(e => e.articleNo && e.quantity && e.product_name)){
+      return(
+        <div className="order-category-div"> 
+            <div className="order-category">
+              <div className="order-title">Articles</div>
+              {
+                order.map((or, index) => {return(
+                  <div key={index} className="article-info">
+                    <div className="article-title"><p>{`x ${or.quantity}`}</p></div>
+                    <img src={or.articleImageUrl} alt="OrderImage" className="order-image" />
+                    <div className="order-name">
+                      <div className="product-name">{or.product_name}</div>
+                      <div className="article-no">{or.articleNo}</div>
+                    </div>
+                  </div>
+                )})
+              }
+            </div>
+          </div>
+      )
+    }
+    return <></>
+  }
+
   return (
     <div className="container">
       <div className="center"> 
@@ -30,23 +57,9 @@ const OrderDetailsComponent = () => {
           </div>
         </div>
 
-        <div className="order-category-div"> 
-          <div className="order-category">
-            <div className="order-title">Articles</div>
-            {
-              order.map((or, index) => {return(
-                <div key={index} className="article-info">
-                  <div className="article-title"><p>{`x ${or.quantity}`}</p></div>
-                  <img src={or.articleImageUrl} alt="OrderImage" className="order-image" />
-                  <div className="order-name">
-                    <div className="product-name">{or.product_name}</div>
-                    <div className="article-no">{or.articleNo}</div>
-                  </div>
-                </div>
-              )})
-            }
-          </div>
-        </div>
+        {
+          renderArticle()
+        }
       </div>
     </div>
   )

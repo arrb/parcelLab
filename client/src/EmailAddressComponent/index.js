@@ -51,10 +51,20 @@ const EmailAddressComponent = () => {
     }
   }, [isSending]) // update the callback if the state changes
 
+  const isValid = (em) => {
+    return String(em)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  }
+
   const clickSubmit = (e) => {
+    console.log("Click submit")
     e.preventDefault()
-    const email = e.target.email.value;
-    sendRequest(email)
+    const email = e.target.email.value
+    // Only send request when the email address is valid
+    isValid(email) ?  sendRequest(email) : setError('Try again with a valid email address')
   } 
 
   return (
@@ -63,7 +73,7 @@ const EmailAddressComponent = () => {
         <h5>Please enter your email address to see your recent orders</h5>
         <div className="text-danger">{error}</div>
         <label>Email</label>
-        <input type="email" name="email" placeholder="example@example.com"/>
+        <input type="email" name="email" aria-label="email" placeholder="example@example.com"/>
         <input type="submit" disabled={isSending} value="Send"/>
       </form>
     </div>
