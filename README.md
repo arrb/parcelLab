@@ -12,7 +12,7 @@ First screen:
 You have the opportunity to search by email and makes a call to the back end.
 
 Second screen:
-This screen shows multiple rows of the orders you've made 
+This screen shows multiple rows of the orders you've made.
 
 Third screen:
 On this screen, you can see a more detailed view of the order such as an image of the articles you've purchased.
